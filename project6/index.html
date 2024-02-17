@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alarm Clock</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: blue; /* Change background color to blue */
+        text-align: center;
+    }
+    #clock {
+        font-size: 48px;
+        margin-top: 50px;
+    }
+    #setAlarm {
+        margin-top: 20px;
+    }
+    select {
+        font-size: 24px;
+        padding: 10px;
+    }
+    #setAlarmButton {
+        font-size: 18px;
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+    #setAlarmButton:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+    <h1>Set Your Alarm Clock</h1>
+    <div id="clock"></div>
+    <div id="setAlarm">
+        <label for="hour">Hour:</label>
+        <select id="hour">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
+        <label for="minute">Minute:</label>
+        <select id="minute">
+            <option value="00">00</option>
+            <option value="05">05</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="35">35</option>
+            <option value="40">40</option>
+            <option value="45">45</option>
+            <option value="50">50</option>
+            <option value="55">55</option>
+        </select>
+        <label for="ampm">AM/PM:</label>
+        <select id="ampm">
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+        </select>
+        <button id="setAlarmButton">Set Alarm</button>
+    </div>
+    
+    <script>
+        // Function to display current time
+        function displayTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').innerText = `${hours}:${minutes}:${seconds}`;
+        }
+
+        // Update time every second
+        setInterval(displayTime, 1000);
+
+        // Function to set alarm
+        document.getElementById('setAlarmButton').addEventListener('click', function() {
+            const selectedHour = document.getElementById('hour').value;
+            const selectedMinute = document.getElementById('minute').value;
+            const selectedAmPm = document.getElementById('ampm').value;
+            
+            let alarmHour = parseInt(selectedHour);
+            const alarmMinute = parseInt(selectedMinute);
+
+            if (selectedAmPm === 'PM') {
+                alarmHour += 12; // Convert to 24-hour format
+            }
+
+            const now = new Date();
+            const nowHour = now.getHours();
+            const nowMinute = now.getMinutes();
+
+            if (alarmHour === nowHour && alarmMinute === nowMinute) {
+                alert('Wake up! It\'s time!');
+            } else {
+                const alarmTime = selectedHour + ':' + selectedMinute + ' ' + selectedAmPm;
+                alert(`Alarm set for ${alarmTime}`);
+            }
+        });
+    </script>
+</body>
+</html>
