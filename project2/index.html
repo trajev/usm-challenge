@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .contain{
+            background-color: black;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .data{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 80px;
+            background-color: black;
+            color: white;
+            transition: .2s ease-in;
+            border: 1px solid gray;
+        }
+        .data:hover{
+            box-shadow: 10px 10px 100px gray;
+
+        }
+        .how{
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+        <div class="contain">
+        <div class="data">
+
+            <div class="hov">
+                <p>Hover me</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

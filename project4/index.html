@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catch Me If You Can</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  #target {
+    position: absolute;
+    width: 100px; /* Adjust width to form a rectangle */
+    height: 50px; /* Adjust height to form a rectangle */
+    background-color: blue;
+    border-radius: 5px; /* Adjust border-radius to give rounded corners */
+    cursor: pointer;
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+  }
+
+</style>
+</head>
+<body>
+  
+  <div id="container">
+    <div id="target">Stay Away</div> <!-- Added "Stay Away" text inside the target div -->
+  </div>
+  <script>
+    const target = document.getElementById('target');
+
+    function moveTarget() {
+      const x = Math.floor(Math.random() * (window.innerWidth - target.offsetWidth));
+      const y = Math.floor(Math.random() * (window.innerHeight - target.offsetHeight));
+      target.style.left = x + 'px';
+      target.style.top = y + 'px';
+    }
+
+    target.addEventListener('mouseover', moveTarget);
+  </script>
+</body>
+</html>
